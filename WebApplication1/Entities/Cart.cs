@@ -6,5 +6,6 @@
         public int AppUserId { get; set; }
         public ApplicationUser AppUser { get; set; }
         public List<CartItem> CartItems { get; set; }
+        public double TotalPrice { get; set;  }
     }
 }
