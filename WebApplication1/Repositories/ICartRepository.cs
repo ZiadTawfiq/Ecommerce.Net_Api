@@ -7,6 +7,8 @@ namespace WebApplication1.Repositories
         Task<Cart> CreateCart(string UserId);
         Task<Cart> GetCartByUserId(string UserId); 
         Task<CartItem> GetCartItemByCartIdAndProductId(int CartId , int ProductId);
+        Task AddCartItem(int productId,int CartId);
+
 
     }
 }
