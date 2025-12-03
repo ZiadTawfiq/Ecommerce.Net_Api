@@ -6,7 +6,7 @@ namespace WebApplication1.Controllers
 {
     [ApiController]
     [Route("Product")]
-    public class ProductsController(IProductService productService,ILogger<ProductsController>logger):ControllerBase
+    public class ProductController(IProductService productService):ControllerBase
     {
         [HttpPost]
         [Route("Create")]

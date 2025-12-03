@@ -65,6 +65,8 @@ namespace WebApplication1
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+            builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<TokenService>();
             builder.Services.AddAutoMapper(typeof(Program));
 

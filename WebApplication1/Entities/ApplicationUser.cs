@@ -4,9 +4,10 @@ namespace WebApplication1.Entities
 {
     public class ApplicationUser: IdentityUser
     {
+        public int UserNumber { get; set;  }
+        public Cart? cart { get; set; }
+        public ICollection<Order> ?Orders { get; set;  }
 
-      public int CartId { get; set;  }
-      public Cart cart { get; set; }
 
 
     }
