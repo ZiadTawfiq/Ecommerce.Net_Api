@@ -7,6 +7,7 @@
         public ApplicationUser? AppUser { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<OrderItem>?OrderItems { get; set; }
+        public double TotalPrice { get; set; }
 
 
     }

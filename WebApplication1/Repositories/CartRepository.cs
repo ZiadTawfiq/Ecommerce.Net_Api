@@ -2,15 +2,30 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.DTOs;
 using WebApplication1.Entities;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WebApplication1.Repositories
 {
-    public class CartRepository(AppDbContext Context ) : ICartRepository
+    public class CartRepository(AppDbContext Context) : ICartRepository
     {
         public async Task AddCartItem(CartItem cartItem)
         {
             await Context.CartItems.AddAsync(cartItem);
 
+        }
+
+        public async Task ClearCart(int cartId)
+        {
+            var cart = await GetCartById(cartId);
+
+            if (cart == null)
+                throw new Exception("Cart not found");
+
+            Context.CartItems.RemoveRange(cart.CartItems.ToList());
+
+            cart.TotalPrice = 0;
+
+            await SaveChanges();
         }
 
         public async Task<Cart> CreateCart(int UserId)
@@ -73,6 +88,14 @@ namespace WebApplication1.Repositories
 
             return cartItem;
 
+        }
+
+        public Task<List<CartItem>> GetCartItemsByCartId(int CartId)
+        {
+            var CartItems = Context.CartItems
+                .Where(_ => _.CartId == CartId)
+                .ToListAsync();
+            return CartItems;
         }
 
         public async Task SaveChanges()

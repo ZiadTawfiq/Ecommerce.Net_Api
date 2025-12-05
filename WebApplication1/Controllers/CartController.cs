@@ -51,6 +51,20 @@ namespace WebApplication1.Controllers
             }
 
         }
+        [HttpDelete]
+        [Route("Clear/{id}")]
+        public async Task<IActionResult> ClearCart([FromRoute]int id)
+        {
+            try
+            {
+                await cartService.ClearCart(id);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
+        } 
        
 
     }

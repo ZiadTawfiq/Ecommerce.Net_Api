@@ -48,6 +48,9 @@ namespace WebApplication1.Services
             await cartRepository.SaveChanges(); 
 
         }
+
+      
+
         public async Task DecreaseCartItem(int ProductId, int CartId)
         {
             var cart = await cartRepository.GetCartById(CartId);
@@ -79,6 +82,10 @@ namespace WebApplication1.Services
         {
             await cartRepository.DeletCartItem(productId, CartId);
             await cartRepository.SaveChanges(); 
+        }
+        public async Task ClearCart(int id)
+        {
+            await cartRepository.ClearCart(id);
         }
 
     }

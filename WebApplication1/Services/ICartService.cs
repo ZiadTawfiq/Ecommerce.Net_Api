@@ -7,6 +7,7 @@ namespace WebApplication1.Services
         Task AddProductToCart(int userId , ProductToCartDto productToCartDto);
         Task DecreaseCartItem(int ProductId, int CartId);
         Task DeleteItem(int productId, int CartId);
+        Task ClearCart(int cartId); 
 
     }
 }
